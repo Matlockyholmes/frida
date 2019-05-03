@@ -12,7 +12,7 @@ import java.util.Calendar;
 @Controller
 @RequestMapping("/")
 class IndexController {
-    public String boodscap(){
+    public String booschap(){
         Calendar today = Calendar.getInstance();
         int day = today.get(Calendar.DAY_OF_WEEK);
         if(day == 2 || day == 5){
@@ -23,7 +23,7 @@ class IndexController {
     }
     @GetMapping
     public ModelAndView index(){
-        ModelAndView modelAndView = new ModelAndView("index","boodschap",boodscap());
+        ModelAndView modelAndView = new ModelAndView("index","boodschap", booschap());
         modelAndView.addObject("frituur",new Adres("Mayonaisen Steenweg","420", new Gemeente("Kontich",2550)));
         return modelAndView;
     }
