@@ -1,0 +1,29 @@
+h1{
+    color: red;
+}
+body{
+    background-color: #C0BD92;
+    font-family: sans-serif;
+}
+dd,dt {
+    margin-left: 0;
+}
+
+dt {
+    margin-top: 0.5em;
+}
+
+dd {
+    font-weight: bold;
+}
+
+.boodschap {
+    background-color: green;
+    border-bottom-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    box-shadow: 5px 5px #777777;
+    margin-left: 0.5em;
+    padding: 0.5em;
+    color: white;
+}
