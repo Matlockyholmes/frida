@@ -17,6 +17,27 @@ dd {
     font-weight: bold;
 }
 
+nav ul {
+    background-color: red;
+    padding: 0.4em 0;
+}
+
+nav li {
+    display: inline;
+}
+
+nav li a {
+    color: white;
+    font-weight: bold;
+    padding-left: 0.5em;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+nav li a:hover {
+    color: #F7FFCC;
+}
+
 .boodschap {
     background-color: green;
     border-bottom-right-radius: 0.5em;
