@@ -4,6 +4,7 @@
 <body>
 <nav th:replace="fragments::frituurmenu"></nav>
 <h1>Frituur Frida</h1>
+<div th:if="${reedsBezocht}">Welkom terug.</div>
 <h2>Vandaag zijn we <span th:text="${boodschap}"></span></h2>
 <h2>Locatie</h2>
 <dl th:object="${frituur}">
