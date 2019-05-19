@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Alfabet')"></head>
+<body>
+<nav th:replace="fragments::frituurmenu"></nav>
+<ul class="naastelkaar">
+    <li th:each="letter:${alfabet}" >
+        <a th:href="@{/sauzen/alfabet/{letter}(letter=${letter})}" th:text="${letter}"></a>
+    </li>
+</ul>
+<h2 th:if="${letter} != null">Letter van het alfabet:<span th:text="${letter}"></span></h2>
+<ul class="zebra">
+    <li th:each="saus:${sauzen}" th:text="${saus.naam}">
+    </li>
+</ul>
+<div th:each="saus:${sauzen}" th:object="${saus}"><img th:src="@{/img/{naam}.png(naam = *{naam})}" th:alt="*{naam}"></div>
+</body>
+</html>

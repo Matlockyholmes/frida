@@ -8,10 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/sauzen")
 public class SausController {
+
+    private final char[] charArray = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
     private final Saus[] sauzen = {
             new Saus(1, "cocktail", new String[] {"tomaten","peper"}),
@@ -30,5 +34,17 @@ public class SausController {
         Arrays.stream(sauzen).filter(saus -> saus.getNummer() == nummer).findFirst()
                 .ifPresent(saus -> modelAndView.addObject("saus", saus));
         return modelAndView;
+    }
+    @GetMapping("alfabet")
+    public ModelAndView toonAlfabet(){
+        return new ModelAndView("alfabet","alfabet",charArray);
+    }
+    public List<Saus> vindSausByLetter(char letter){
+        return Arrays.stream(sauzen).filter(saus -> saus.getNaam().charAt(0) == letter).collect(Collectors.toList());
+    }
+
+    @GetMapping("alfabet/{letter}")
+    public ModelAndView toonSausBijLetter(@PathVariable char letter){
+        return new ModelAndView("alfabet","sauzen", vindSausByLetter(letter)).addObject("alfabet",charArray);
     }
 }
