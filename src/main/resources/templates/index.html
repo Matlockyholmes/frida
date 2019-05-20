@@ -13,5 +13,7 @@
     <dt>Gemeente</dt>
     <dd th:object="${frituur.gemeente}" th:text="|*{naam} *{postcode}|"></dd>
 </dl>
+<p>Deze pagina werd <span th:text="${aantalKeerBekeken}"></span>
+    keer bekeken.</p>
 </body>
 </html>

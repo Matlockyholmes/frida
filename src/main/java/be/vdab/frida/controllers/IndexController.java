@@ -11,10 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Controller
 @RequestMapping("/")
 class IndexController {
+    private final AtomicInteger aantalKeerBekeken = new AtomicInteger();
     public String booschap(){
         Calendar today = Calendar.getInstance();
         int day = today.get(Calendar.DAY_OF_WEEK);
@@ -36,6 +38,7 @@ class IndexController {
         if (reedsBezocht != null) {
             modelAndView.addObject("reedsBezocht", true);
         }
+        modelAndView.addObject("aantalKeerBekeken", aantalKeerBekeken.incrementAndGet());
         return modelAndView;
     }
 }
