@@ -5,6 +5,7 @@ import be.vdab.frida.exceptions.SausRepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
@@ -17,10 +18,15 @@ import java.util.stream.Collectors;
 @Qualifier("PropertySauce")
 public class PropertiesSausRepository implements SausRepository {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final String pad;
+
+    public PropertiesSausRepository(@Value("${sauzenproperties}") String pad) {
+        this.pad = pad;
+    }
 
     @Override
     public List<Saus> findall() {
-        try(BufferedReader br = new BufferedReader(new FileReader("/data/sauzen.properties"))){
+        try(BufferedReader br = new BufferedReader(new FileReader(pad))){
             return br.lines().filter(line -> ! line.isEmpty())
                     .map(line -> maakSaus(line))
                     .collect(Collectors.toList());

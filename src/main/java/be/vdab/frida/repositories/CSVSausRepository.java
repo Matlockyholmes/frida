@@ -4,6 +4,7 @@ import be.vdab.frida.domain.Saus;
 import be.vdab.frida.exceptions.SausRepositoryException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import java.io.BufferedReader;
@@ -15,10 +16,15 @@ import java.util.stream.Collectors;
 @Repository
 public class CSVSausRepository implements SausRepository{
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    private final String pad;
+
+    public CSVSausRepository(@Value("${sauzencsv}")String pad){
+        this.pad = pad;
+    }
 
     @Override
     public List<Saus> findall() {
-        try(BufferedReader br = new BufferedReader(new FileReader("/data/sauzen.csv"))){
+        try(BufferedReader br = new BufferedReader(new FileReader(pad))){
           return br.lines().filter(line -> ! line.isEmpty())
                     .map(line -> maakSaus(line))
                     .collect(Collectors.toList());
