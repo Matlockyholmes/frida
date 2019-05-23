@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments::head(title='Frida snacks')">
 </head>
 <body>
 <nav th:replace="fragments::frituurmenu"></nav>
 <ul class="naastelkaar">
     <li th:each="letter:${alfabet}">
-        <a th:href="@{alfabet/{letter}(letter = ${letter})}" th:text="${letter}"></a>
+        <a th:href="@{/snacks/{letter}(letter = ${letter})}" th:text="${letter}"></a>
+    </li>
+</ul>
+<h2 th:if="${letter} != null">Snacks die beginnen met de <span th:text="${letter}"></span></h2>
+<ul class="zebra">
+    <li th:each="snack:${snacks}" th:text="${snack.naam}">
     </li>
 </ul>
 </body>
