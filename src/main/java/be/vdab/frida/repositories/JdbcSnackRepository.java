@@ -23,7 +23,7 @@ public class JdbcSnackRepository implements SnackRepository {
     @Override
     public Optional<Snack> findById(long id) {
         try {
-            String sql = "select id, naam, prijs where id = ?";
+            String sql = "select id, naam, prijs from snacks where id = ?";
             return Optional.of(template.queryForObject(sql, snackMapper, id));
         } catch (IncorrectResultSizeDataAccessException ex) {
             return Optional.empty();
@@ -40,7 +40,7 @@ public class JdbcSnackRepository implements SnackRepository {
 
     @Override
     public List<Snack> findByBeginNaam(String beginNaam) {
-        String sql = "select id, naam, prijs where naam like ? order by naam";
+        String sql = "select id, naam, prijs from snacks where naam like ? order by naam";
         return template.query(sql, snackMapper, beginNaam + '%');
     }
 }
