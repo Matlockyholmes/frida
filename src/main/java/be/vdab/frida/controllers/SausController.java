@@ -1,6 +1,5 @@
 package be.vdab.frida.controllers;
 
-import be.vdab.frida.services.DefaultSausService;
 import be.vdab.frida.services.SausService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
