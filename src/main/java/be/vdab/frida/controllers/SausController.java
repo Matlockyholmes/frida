@@ -34,6 +34,7 @@ public class SausController {
 
     @GetMapping("alfabet/{letter}")
     public ModelAndView toonSausBijLetter(@PathVariable char letter){
-        return new ModelAndView("alfabet","sauzen", sausService.findByNaamBegintMet(letter)).addObject("alfabet",charArray);
+        return new ModelAndView("alfabet","sauzen", sausService.findByNaamBegintMet(letter))
+                .addObject("alfabet",charArray);
     }
 }
