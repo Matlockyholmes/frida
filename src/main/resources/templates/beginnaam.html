@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title = 'Beginnaam formulier')">
+</head>
+<body>
+<nav th:replace="fragments::frituurmenu"></nav>
+<form th:object="${beginNaamForm}" method="get" th:action="@{/snacks/beginnaam}">
+    <label>Geef een beginnaam in:</span><input th:field="*{beginNaam}"></label>
+    <input type="submit" value="zoeken">
+</form>
+<ul class="zebra" th:if="${snacks} != null">
+    <li th:each="snack:${snacks}" th:object="${snack}" th:text="|*{naam} &euro; *{prijs}|"></li>
+</ul>
+</body>
+</html>

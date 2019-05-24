@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:fragment="head(title)" xmlns:th="http://www/thymeleaf.org">
+<head th:fragment="head(title)" xmlns:th="http://www.thymeleaf.org">
     <link rel="icon" th:href="@{/icons/frida.ico}" type="image/x-icon">
     <title th:text="${title}"></title>
     <link rel="stylesheet" th:href="@{/css/frida.css}">
@@ -13,6 +13,7 @@
         <li><a th:href="@{/talen}">Taal</a></li>
         <li><a th:href="@{/sauzen/alfabet}">Alfabetisch</a></li>
         <li><a th:href="@{/snacks}">Snacks</a></li>
+        <li><a th:href="@{/snacks/beginnaam/form}">Snack op naam</a></li>
     </ul>
 </nav>
 </body>
