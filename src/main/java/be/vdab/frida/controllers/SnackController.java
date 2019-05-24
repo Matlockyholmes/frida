@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("snacks")
 public class SnackController {
@@ -33,8 +35,11 @@ public class SnackController {
         return modelAndView;
     }
     @GetMapping("beginnaam")
-    public ModelAndView beginNaam(BeginNaamForm beginNaamForm){
+    public ModelAndView beginNaam(@Valid BeginNaamForm beginNaamForm, Errors errors){
         ModelAndView modelAndView = new ModelAndView("beginnaam");
+        if(errors.hasErrors()){
+            return modelAndView;
+        }
         return modelAndView.addObject("snacks",snackService.findByBeginNaam(beginNaamForm.getBeginNaam()));
     }
 }
