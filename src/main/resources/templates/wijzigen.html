@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="nl" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments::head(title='Snack wijzigen')">
+</head>
+<body>
+<nav th:replace="fragments::frituurmenu"></nav>
+<h1><span th:text="${snack.naam}"></span> Wijzigen:</h1>
+<form th:object="${snack}" method="post" th:action="@{/snacks}">
+    <label>Naam:<span th:errors="*{naam}"></span>
+        <input th:field = "*{naam}" autofocus required></label>
+    <label>Prijs:<span th:errors="*{prijs}"></span>
+        <input th:field = "*{prijs}" required></label>
+    <input type="hidden" name="id" th:value="*{id}"/>
+    <input type="submit" value="wijzigen">
+</form>
+<script th:src="@{/js/preventDoubleSubmit.js}"></script>
+</body>
+</html>

@@ -11,8 +11,10 @@
 </ul>
 <h2 th:if="${letter} != null">Snacks die beginnen met de <span th:text="${letter}"></span></h2>
 <ul class="zebra">
-    <li th:each="snack:${snacks}" th:text="${snack.naam}">
+    <li th:each="snack:${snacks}">
+        <a th:href="@{/snacks/wijzigen/form/{id}(id = ${snack.id})}" th:text="${snack.naam}"></a>
     </li>
 </ul>
+<div th:if="${param.gewijzigd}!=null" class="boodschap"><span th:text="${param.gewijzigd}"></span> is gewijzigd</div>
 </body>
 </html>
